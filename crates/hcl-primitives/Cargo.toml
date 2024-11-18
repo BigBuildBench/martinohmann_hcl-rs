@@ -1,0 +1,34 @@
+[package]
+name = "hcl-primitives"
+version = "0.1.7"
+authors = ["Martin Ohmann <martinohmann@gmail.com>"]
+license = "MIT OR Apache-2.0"
+description = "Primitives used by the HCL sub-languages"
+repository = "https://github.com/martinohmann/hcl-rs"
+documentation = "https://docs.rs/hcl-primitives/"
+keywords = ["hcl", "primitives"]
+categories = ["encoding"]
+readme = "README.md"
+edition = "2021"
+include = [
+  "CHANGELOG.md",
+  "Cargo.toml",
+  "LICENSE*",
+  "README.md",
+  "benches/**/*",
+  "examples/**/*",
+  "src/**/*",
+  "tests/**/*"
+]
+
+[package.metadata.docs.rs]
+rustdoc-args = ["--cfg", "docsrs"]
+all-features = true
+
+[features]
+default = ["std"]
+std = ["serde?/std"]
+perf = ["std", "dep:kstring"]
+serde = ["dep:serde", "kstring?/serde"]
+
+[dependencies]

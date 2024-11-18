@@ -1,0 +1,45 @@
+[package]
+name = "hcl-rs"
+version = "0.18.2"
+authors = ["Martin Ohmann <martinohmann@gmail.com>"]
+license = "MIT OR Apache-2.0"
+description = "HCL parser and formatter for rust with serde support"
+repository = "https://github.com/martinohmann/hcl-rs"
+documentation = "https://docs.rs/hcl-rs/"
+keywords = ["hcl", "serde", "serialization"]
+categories = ["encoding"]
+readme = "README.md"
+edition = "2021"
+include = [
+  "CHANGELOG.md",
+  "Cargo.toml",
+  "LICENSE*",
+  "README.md",
+  "benches/**/*",
+  "examples/**/*",
+  "src/**/*",
+  "tests/**/*"
+]
+
+[package.metadata.docs.rs]
+rustdoc-args = ["--cfg", "docsrs"]
+all-features = true
+
+[lib]
+name = "hcl"
+path = "src/lib.rs"
+
+[features]
+default = []
+perf = ["hcl-edit/perf", "hcl-primitives/perf"]
+
+[dependencies]
+
+[dev-dependencies]
+indoc = "2.0"
+pretty_assertions = "1.4.1"
+serde_json = { version = "1.0.128", features = ["preserve_order"] }
+
+[[example]]
+name = "in-place-expr-evaluation"
+test = true
